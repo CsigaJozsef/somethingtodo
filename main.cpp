@@ -1,20 +1,23 @@
 #include <stdlib.h>
 #include <SDL2/SDL.h>
-#include <SDL2/SDL_render.h>
+#include "WindowManager.hpp"
+
+WindowManager *windowManager;
 
 int main(int argc, char **argv)
 {
-    SDL_Init(SDL_INIT_EVERYTHING);
-    SDL_Window *window = SDL_CreateWindow("title", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 600, 400, SDL_WINDOW_SHOWN);
-    SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, 0);
+    windowManager = new WindowManager();
 
-    SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
+    windowManager->init("HugyosFOs", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 600, 400, false);
 
-    SDL_RenderClear(renderer);
+    while(windowManager->isRunning())
+    {
+        windowManager->handleEvents();
+        windowManager->update();
+        windowManager->render();
+    }
 
-    SDL_RenderPresent(renderer);
-
-    SDL_Delay(3000);
+    windowManager->clean();
 
     return 0;
 }
