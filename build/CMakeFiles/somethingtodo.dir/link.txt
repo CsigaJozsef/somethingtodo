@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/somethingtodo.dir/WindowManager.cpp.o CMakeFiles/somethingtodo.dir/main.cpp.o -o somethingtodo  -L/usr/lib/x86_64-linux-gnu  -lSDL2 

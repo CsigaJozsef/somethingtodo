@@ -1,3 +1,0 @@
-/home/csiga/HDD/Proj/somethingtodo/build/CMakeFiles/somethingtodo.dir
-/home/csiga/HDD/Proj/somethingtodo/build/CMakeFiles/edit_cache.dir
-/home/csiga/HDD/Proj/somethingtodo/build/CMakeFiles/rebuild_cache.dir
