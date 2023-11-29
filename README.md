@@ -31,9 +31,9 @@
          moving on to map generator and making map loading
          available
     
-    4. map things
+4. map things
 
-    5. saving and such, will think about later
+5. saving and such, will think about later
 
 # Game idea 2:
 ### Straigth up asteroids xD
