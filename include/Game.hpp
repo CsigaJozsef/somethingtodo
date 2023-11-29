@@ -3,11 +3,11 @@
 #include <stdio.h>
 #include <iostream>
 
-class WindowManager 
+class Game 
 {
 public:
-    WindowManager();
-    ~WindowManager();
+    Game();
+    ~Game();
 
     void init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen);
 
@@ -18,6 +18,9 @@ public:
 
     bool isRunning();
 private:
+    int _count;
+    int _width;
+    int _height;
     bool _running;
     SDL_Window *_window;
     SDL_Renderer *_renderer;

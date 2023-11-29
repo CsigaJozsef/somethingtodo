@@ -1,12 +1,12 @@
-#include "WindowManager.hpp"
+#include "../include/Game.hpp"
 
-WindowManager::WindowManager()
+Game::Game()
 {}
 
-WindowManager::~WindowManager()
+Game::~Game()
 {}
 
-void WindowManager::init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen)
+void Game::init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen)
 {
     int flags = 0;
     if(fullscreen)
@@ -19,12 +19,14 @@ void WindowManager::init(const char* title, int xpos, int ypos, int width, int h
         std::cout << "SDL Initialized..." << std::endl;
 
         _window = SDL_CreateWindow(title, xpos, ypos, width, height, flags);
+        
         if(_window)
         {
             std::cout << "Windows created" << std::endl;
         }
 
         _renderer = SDL_CreateRenderer(_window, -1, 0);
+        
         if(_renderer)
         {
             SDL_SetRenderDrawColor(_renderer, 173, 216, 230, 255);
@@ -32,6 +34,10 @@ void WindowManager::init(const char* title, int xpos, int ypos, int width, int h
         }
 
         _running = true;
+
+        _height = height;
+        _width = width;
+        _count = 0;
     }
     else
     {
@@ -39,7 +45,7 @@ void WindowManager::init(const char* title, int xpos, int ypos, int width, int h
     }
 }
 
-void WindowManager::handleEvents()
+void Game::handleEvents()
 {
     SDL_Event event;
     SDL_PollEvent(&event);
@@ -55,17 +61,21 @@ void WindowManager::handleEvents()
     }
 }
 
-void WindowManager::update()
+void Game::update()
 {
+    _count += 1;
+
+    std::cout << _count << std::endl;
+}
+
+void Game::render()
+{
+    SDL_SetRenderDrawColor(_renderer, 173, 216, 230, 255);
     SDL_RenderClear(_renderer);
-    //add stuff to render
     SDL_RenderPresent(_renderer);
 }
 
-void WindowManager::render()
-{}
-
-void WindowManager::clean()
+void Game::clean()
 {
     SDL_DestroyWindow(_window);
     SDL_DestroyRenderer(_renderer);
@@ -73,7 +83,7 @@ void WindowManager::clean()
     std::cout << "Game cleaned" << std::endl;
 }
 
-bool WindowManager::isRunning()
+bool Game::isRunning()
 {
     return _running ? true : false;
 }
