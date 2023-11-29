@@ -8,7 +8,7 @@ int main(int argc, char **argv)
 {
     windowManager = new WindowManager();
 
-    windowManager->init("HugyosFOs", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 600, 400, false);
+    windowManager->init("HugyosFos", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 600, 400, false);
 
     while(windowManager->isRunning())
     {

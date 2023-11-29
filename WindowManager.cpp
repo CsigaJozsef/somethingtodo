@@ -37,14 +37,6 @@ void WindowManager::init(const char* title, int xpos, int ypos, int width, int h
     {
         _running = false;
     }
-
-    // SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
-
-    // 
-
-    // SDL_RenderPresent(renderer);
-
-    // SDL_Delay(3000);
 }
 
 void WindowManager::handleEvents()
