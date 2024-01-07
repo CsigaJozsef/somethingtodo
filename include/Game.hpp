@@ -2,6 +2,7 @@
 #include <SDL2/SDL.h>
 #include <stdio.h>
 #include <iostream>
+#include "Player.hpp"
 
 class Game 
 {
@@ -17,6 +18,9 @@ public:
     void clean();
 
     bool isRunning();
+
+    Player* player;
+
 private:
     int _count;
     int _width;

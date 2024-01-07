@@ -1,7 +1,9 @@
 #include "../include/Game.hpp"
 
 Game::Game()
-{}
+{
+    player = new Player();
+}
 
 Game::~Game()
 {}
