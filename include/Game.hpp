@@ -14,7 +14,7 @@ public:
 
     void init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen);
 
-    void handleEvents();
+    void handleEvents(double delta, bool refreshKBDState);
     void update();
     void render();
     void clean();

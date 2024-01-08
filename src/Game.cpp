@@ -28,8 +28,8 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
             std::cout << "Windows created" << std::endl;
         }
 
-        // _renderer = SDL_CreateRenderer(_window, -1, 0);
-        _renderer = SDL_CreateRenderer(_window, -1, SDL_RENDERER_PRESENTVSYNC | SDL_RENDERER_ACCELERATED );
+        _renderer = SDL_CreateRenderer(_window, -1, 0);
+        // _renderer = SDL_CreateRenderer(_window, -1, SDL_RENDERER_PRESENTVSYNC | SDL_RENDERER_ACCELERATED );
 
         if (_renderer)
         {
@@ -49,7 +49,7 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
     }
 }
 
-void Game::handleEvents()
+void Game::handleEvents(double delta, bool refreshKBDState)
 {
     SDL_Event event;
     SDL_PollEvent(&event);
@@ -61,36 +61,41 @@ void Game::handleEvents()
             _running = false;
             break;
 
-        // Keyboard events
-        case SDL_KEYDOWN:
-            if(event.key.keysym.scancode == SDL_SCANCODE_W || event.key.keysym.scancode == SDL_SCANCODE_UP)
-            {
-                player->move(UP);
-            }
-
-            if(event.key.keysym.scancode == SDL_SCANCODE_S || event.key.keysym.scancode == SDL_SCANCODE_DOWN)
-            {
-                player->move(DOWN);
-            }
-
-            if(event.key.keysym.scancode == SDL_SCANCODE_A || event.key.keysym.scancode == SDL_SCANCODE_LEFT)
-            {
-                player->move(LEFT);
-            }
-
-            if(event.key.keysym.scancode == SDL_SCANCODE_D || event.key.keysym.scancode == SDL_SCANCODE_RIGHT)
-            {
-                player->move(RIGHT);
-            }
-
         default:
             break;
     }
+
+    if (refreshKBDState)
+    {
+        const Uint8 *keystates = SDL_GetKeyboardState(NULL);
+
+        if (keystates[SDL_SCANCODE_W])
+        {
+            player->move(UP, delta);
+        }
+
+        if (keystates[SDL_SCANCODE_S])
+        {
+            player->move(DOWN, delta);
+        }
+
+        if (keystates[SDL_SCANCODE_A])
+        {
+            player->move(LEFT, delta);
+        }
+
+        if (keystates[SDL_SCANCODE_D])
+        {
+            player->move(RIGHT, delta);
+        }
+    }
+
+
 }
 
 void Game::update()
 {
-    _count += 1;
+    // _count += 1;
 
     // std::cout << _count << std::endl;
 }

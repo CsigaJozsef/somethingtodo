@@ -1,8 +1,7 @@
 #include "../include/Player.hpp"
 
-Player::Player()
+Player::Player() : _speed(5)
 {
-    _speed = 20;
 }
 
 Player::~Player()
@@ -19,25 +18,27 @@ int Player::getY()
     return _pos.y;
 }
 
-void Player::move(direction d)
+void Player::move(direction d, double delta)
 {
     if (d == UP)
     {
-        _pos.y -= _speed;
+        _pos.y -= std::ceil(_speed * delta);
     }
 
     if (d == DOWN)
     {
-        _pos.y += _speed;
+        _pos.y += std::ceil(_speed * delta);
     }
 
     if (d == LEFT)
     {
-        _pos.x -= _speed;
+        _pos.x -= std::ceil(_speed * delta);
     }
 
     if (d == RIGHT)
     {
-        _pos.x += _speed;
+        _pos.x += std::ceil(_speed * delta);
     }
+
+    std::cout << _pos <<std::endl;
 }
