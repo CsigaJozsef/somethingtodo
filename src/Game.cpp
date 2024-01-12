@@ -65,6 +65,15 @@ void Game::handleEvents(double delta, bool refreshKBDState)
             break;
     }
 
+    int xMouse, yMouse;
+
+    if(event.type == SDL_MOUSEMOTION)
+    {
+        SDL_GetMouseState(&xMouse,&yMouse);
+    }
+
+    std::cout<< xMouse << ", " << yMouse << std::endl;
+
     if (refreshKBDState)
     {
         const Uint8 *keystates = SDL_GetKeyboardState(NULL);
